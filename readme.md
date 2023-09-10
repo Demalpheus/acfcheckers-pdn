@@ -1,4 +1,6 @@
+
 # Colors
+Notating colors used for reference
 
 board
 green 58ba4b or 669966 - 20% lighter: #85ad85
