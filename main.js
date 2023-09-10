@@ -1,3 +1,35 @@
+class FENComponent extends HTMLElement {
+    connectedCallback() {
+        let fen = this.getAttribute('data-fen')
+        // Check to see if the data-reverse-board value is set, else use a default value of true
+/*        let reversedAttr = this.getAttribute('data-reverse-board')
+        let reversed = true
+        if (reversedAttr == "false") {
+            reversed = false
+        } 
+        let numbersAttr = this.getAttribute('data-show-numbers')
+        let showNumbers = true
+        if (numbersAttr == "false") {
+            showNumbers = false
+        }
+        let newBoard = document.createElement('canvas')
+        let size = getBoardSize()
+        newBoard.width = size
+        newBoard.height = size
+        this.appendChild(newBoard)
+        let context = newBoard.getContext("2d")
+        drawBoard(newBoard.width, newBoard.height, reversed, showNumbers, context)
+        let coordinates = getPiecePlacements(newBoard)
+        let position = setPosition(fen)
+        //console.log('NEW POSITION RETURNED: ' + position)
+        drawPosition(position, coordinates, newBoard.width, reversed, context)
+*/
+        initBoard(this.id);
+    }
+}
+
+customElements.define('pdn-fen', FENComponent)
+
 function move(start, end) {
     try {
         let piece = document.querySelector(`.square-${start}`);
@@ -29,9 +61,10 @@ function removePiece(square) {
 
 function initBoard(boardId, FEN) {
     let board = document.getElementById(boardId);
+    let fen = board.getAttribute('data-fen');
     // Clear board childen
     board.textContent = '';
-    if (FEN === undefined) {
+    if (fen == "") {
         // Set red pieces
         for (let i=1; i < 13; i++) {
             let s = document.createElement("div");
@@ -43,5 +76,49 @@ function initBoard(boardId, FEN) {
             s.classList.add("piece", "wp", `square-${i}`);
             board.appendChild(s);
         }
+    } else {
+        let pos = setPosition(fen);
+        for (let i=0; i < 32; i++) {
+            if (pos[i] != "") {
+                let s = document.createElement("div");
+                s.classList.add("piece", pos[i], `square-${i+1}`);
+                board.appendChild(s);
+            }
+        }
     }
+}
+
+function setPosition(fen) {
+    // Interprets a FEN string to return the desired position
+    // Example FEN 
+    // [FEN "B:W18,24,27,28,K10,K15:B12,16,20,K22,K25,K29"]
+    let turn = fen.split(':')[0].replace("FEN", "").replace("[","").replace(" ","").replace('"',"")
+    //console.log('current Turn: ' + turn)
+    let redString = fen.split(":")[2].replace("B","").replace('"',"").replace("]","").split(",")
+    let whiteString = fen.split(":")[1].replace("W","").replace('"',"").replace("]","").split(",")
+    //console.log('Red squares: ' + redString)
+    //console.log('White squares: ' + whiteString)
+    let position = []
+    for (let index = 0; index < 32; index++) {
+       position.push("") 
+    }
+    redString.forEach(element => {
+        if (element.indexOf("K") > -1) {
+            let p = element.replace("K","")
+            position[p-1] = "rk"
+        } else {
+            position[element-1] = "rp"
+        }
+    })
+    whiteString.forEach(element => { 
+        if (element.search("K") > -1) {
+            let p = element.replace("K", "")
+            position[p-1] = "wk"
+        } else {
+            position[element-1] = "wp"
+        }
+    })
+    //console.log('New Position:')
+    //console.log(position)
+    return position
 }

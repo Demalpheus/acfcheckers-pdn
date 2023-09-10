@@ -8,37 +8,8 @@
         <script src="main.js"></script>
     </head>
     <body>
-        <div class="board" id="board0">            
-            <div class="piece rp square-1"></div>
-            <div class="piece rp square-2"></div>
-            <div class="piece rp square-3"></div>
-            <div class="piece rp square-4"></div>
-
-            <div class="piece rp square-5"></div>
-            <div class="piece rp square-6"></div>
-            <div class="piece rp square-7"></div>
-            <div class="piece rp square-8"></div>
-
-            <div class="piece rp square-9"></div>
-            <div class="piece rp square-10"></div>
-            <div class="piece rp square-11"></div>
-            <div class="piece rp square-12"></div>
- 
-            <div class="piece wp square-21"></div>
-            <div class="piece wp square-22"></div>
-            <div class="piece wp square-23"></div>
-            <div class="piece wp square-24"></div>
-
-            <div class="piece wp square-25"></div>
-            <div class="piece wp square-26"></div>
-            <div class="piece wp square-27"></div>
-            <div class="piece wp square-28"></div>
-
-            <div class="piece wp square-29"></div>
-            <div class="piece wp square-30"></div>
-            <div class="piece wp square-31"></div>
-            <div class="piece wp square-32"></div>
-        </div>
+        <div class="board" id="board0" data-fen='[FEN "W:W18,24,27,28,K10,K15:B12,16,20,K22,K25,K29"]'></div>
+        <pdn-fen id="board1" data-fen='[FEN "W:W18,24,27,28,K10,K15:B12,16,20,K22,K25,K29"]'></pdn-fen>
         <button onClick="move(11, 15)">move</button>
         <button onClick="removePiece(15)">delete</button>
         <button onClick="initBoard('board0')">reset</button>

@@ -2,7 +2,26 @@ body {
     background-color: #333333;
 }
 
+pdn-fen:not(:defined) {
+  /* Pre-style, give layout, replicate app-drawer's eventual styles, etc. */
+  display: inline-block;
+  height: 100vh;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+pdn-fen {
+    display: block;
+    position: relative;
+    background-image: url("./assets/board.png");
+    background-size: cover;
+    width: 600px;
+    height: 600px;
+    border-radius: 5px;
+}
+
 .board {
+    position: relative;
     background-image: url("./assets/board.png");
     background-size: cover;
     width: 800px;
@@ -13,8 +32,8 @@ body {
 .piece {
     position: absolute;
     background-size: cover;
-    width: 100px;
-    height: 100px;
+    width: 12.5%;
+    height: 12.5%;
 }
 
 .rp {
