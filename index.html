@@ -8,7 +8,7 @@
         <script src="main.js"></script>
     </head>
     <body>
-        <div class="board">            
+        <div class="board" id="board0">            
             <div class="piece rp square-1"></div>
             <div class="piece rp square-2"></div>
             <div class="piece rp square-3"></div>
@@ -40,5 +40,7 @@
             <div class="piece wp square-32"></div>
         </div>
         <button onClick="move(11, 15)">move</button>
+        <button onClick="removePiece(15)">delete</button>
+        <button onClick="initBoard('board0')">reset</button>
     </body>
 </html>
