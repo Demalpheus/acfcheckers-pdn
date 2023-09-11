@@ -8,10 +8,11 @@
         <script src="main.js"></script>
     </head>
     <body>
-        <div class="board" id="board0" data-fen='[FEN "W:W18,24,27,28,K10,K15:B12,16,20,K22,K25,K29"]'></div>
+        <div class="board" id="board0" style="display:none;" data-fen='[FEN "W:W18,24,27,28,K10,K15:B12,16,20,K22,K25,K29"]'></div>
         <pdn-fen id="board1" data-fen='[FEN "W:W18,24,27,28,K10,K15:B12,16,20,K22,K25,K29"]'></pdn-fen>
         <button onClick="move(11, 15)">move</button>
         <button onClick="removePiece(15)">delete</button>
         <button onClick="initBoard('board0')">reset</button>
+        <button onClick="reverseBoard(document.getElementById('board1'))">reverse</button>
     </body>
 </html>

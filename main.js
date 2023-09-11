@@ -128,3 +128,34 @@ function setPosition(fen) {
     //console.log(position)
     return position
 }
+
+function findInvertSquare(number) {
+    if (number < 17) {
+        number = 32 - (number - 1)
+    } else {
+        number = 33 - number
+    }
+    return number
+}
+
+function reverseBoard(board) {
+    let squares = board.querySelectorAll(".piece");
+    squares.forEach(element => {
+        let c = element.classList
+        c.forEach(m => {
+            if (m.match(/square.*/)) {
+                let n = Number(m.split('-')[1])
+                let rn = findInvertSquare(n)
+                element.classList.remove(m)
+                element.classList.add(`square-${rn}`)
+            }
+        })
+    })
+    let overlays = board.querySelectorAll('[class*="number-overlay"]')
+    console.log('overlays found: ' + overlays.length)
+    overlays.forEach(o => {
+        let n = Number(o.innerText)
+        let rn = findInvertSquare(n)
+        o.innerText = rn
+    })
+}
