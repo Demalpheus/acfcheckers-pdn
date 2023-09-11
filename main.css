@@ -15,8 +15,8 @@ pdn-fen {
     position: relative;
     background-image: url("./assets/board.png");
     background-size: cover;
-    width: 600px;
-    height: 600px;
+    aspect-ratio: 1;
+    width: 35%;
     border-radius: 5px;
 }
 
