@@ -39,187 +39,291 @@ pdn-fen {
 .rp {
     background-image: url("assets/rp.png");
     transition: transform 0.5s;
-    display: block !important;
+    
 }
 
 .wp {
     background-image: url("assets/wp.png");
     transition: transform 0.5s;
-    display: block !important;
+    
 }
 
 .rk {
     background-image: url("assets/rk.png");
     transition: transform 0.5s;
-    display: block !important;
+    
 }
 
 .wk {
     background-image: url("assets/wk.png");
     transition: transform 0.5s;
-    display: block !important;
 }
 
-.move {
+[class*="square-"] {
     transition: transform 0.5s;
+}
+
+[class*="number-overlay-"] {
+    position: absolute;
+    width: 12.5%;
+    height: 12.5%;
+    color: #ffffd6; 
+    cursor: default;
+    font-size: 1vw;
+}
+
+.number-overlay-1 {
+    transform: translate(102%, 0%);    
+}
+
+.number-overlay-2 {
+    transform: translate(302%, 0%);
+}
+
+.number-overlay-3 {
+    transform: translate(502%, 0%);
+}
+
+.number-overlay-4 {
+    transform: translate(702%, 0%);
+}
+
+.number-overlay-5 {
+    transform: translate(2%, 100%);
+}
+
+.number-overlay-6 {
+    transform: translate(202%, 100%);
+}
+
+.number-overlay-7 {
+    transform: translate(402%, 100%);
+}
+
+.number-overlay-8 {
+    transform: translate(602%, 100%);
+}
+
+.number-overlay-9 {
+    transform: translate(102%, 200%);
+}
+
+.number-overlay-10 {
+    transform: translate(302%, 200%);
+}
+
+.number-overlay-11 {
+    transform: translate(502%, 200%);
+}
+
+.number-overlay-12 {
+    transform: translate(702%, 200%);
+}
+
+.number-overlay-13 {
+    transform: translate(2%, 300%);
+}
+
+.number-overlay-14 {
+    transform: translate(202%, 300%);
+}
+
+.number-overlay-15 {
+    transform: translate(402%, 300%);
+}
+
+.number-overlay-16 {
+    transform: translate(602%, 300%);
+}
+
+.number-overlay-17 {
+    transform: translate(102%, 400%);
+}
+
+.number-overlay-18 {
+    transform: translate(302%, 400%);
+}
+
+.number-overlay-19 {
+    transform: translate(502%, 400%);
+}
+
+.number-overlay-20 {
+    transform: translate(702%, 400%);
+}
+
+.number-overlay-21 {
+    transform: translate(2%, 500%);
+}
+
+.number-overlay-22 {
+    transform: translate(202%, 500%);
+}
+
+.number-overlay-23 {
+    transform: translate(402%, 500%);
+}
+
+.number-overlay-24 {
+    transform: translate(602%, 500%);
+}
+
+.number-overlay-25 {
+    transform: translate(102%, 600%);
+}
+
+.number-overlay-26 {
+    transform: translate(302%, 600%);
+}
+
+.number-overlay-27 {
+    transform: translate(502%, 600%);
+}
+
+.number-overlay-28 {
+    transform: translate(702%, 600%);
+}
+
+.number-overlay-29 {
+    transform: translate(2%, 700%);
+}
+
+.number-overlay-30 {
+    transform: translate(202%, 700%);
+}
+
+.number-overlay-31 {
+    transform: translate(402%, 700%);
+}
+
+.number-overlay-32 {
+    transform: translate(602%, 700%);
 }
 
 .square-1 {
     transform: translate(100%, 0%);
-    display: none;
 }
 
 .square-2 {
     transform: translate(300%, 0%);
-    display: none;
 }
 
 .square-3 {
     transform: translate(500%, 0%);
-    display: none;
 }
 
 .square-4 {
     transform: translate(700%, 0%);
-    display: none;
 }
 
 .square-5 {
     transform: translate(0%, 100%);
-    display: none;
 }
 
 .square-6 {
     transform: translate(200%, 100%);
-    display: none;
 }
 
 .square-7 {
     transform: translate(400%, 100%);
-    display: none;
 }
 
 .square-8 {
     transform: translate(600%, 100%);
-    display: none;
 }
 
 .square-9 {
     transform: translate(100%, 200%);
-    display: none;
 }
 
 .square-10 {
     transform: translate(300%, 200%);
-    display: none;
 }
 
 .square-11 {
     transform: translate(500%, 200%);
-    display: none;
 }
 
 .square-12 {
     transform: translate(700%, 200%);
-    display: none;
 }
 
 .square-13 {
     transform: translate(0%, 300%);
-    display: none;
 }
 
 .square-14 {
     transform: translate(200%, 300%);
-    display: none;
 }
 
 .square-15 {
     transform: translate(400%, 300%);
-    display: none;
 }
 
 .square-16 {
     transform: translate(600%, 300%);
-    display: none;
 }
 
 .square-17 {
     transform: translate(100%, 400%);
-    display: none;
 }
 
 .square-18 {
     transform: translate(300%, 400%);
-    display: none;
 }
 
 .square-19 {
     transform: translate(500%, 400%);
-    display: none;
 }
 
 .square-20 {
     transform: translate(700%, 400%);
-    display: none;
 }
 
 .square-21 {
     transform: translate(0%, 500%);
-    display: none;
 }
 
 .square-22 {
     transform: translate(200%, 500%);
-    display: none;
 }
 
 .square-23 {
     transform: translate(400%, 500%);
-    display: none;
 }
 
 .square-24 {
     transform: translate(600%, 500%);
-    display: none;
 }
 
 .square-25 {
     transform: translate(100%, 600%);
-    display: none;
 }
 
 .square-26 {
     transform: translate(300%, 600%);
-    display: none;
 }
 
 .square-27 {
     transform: translate(500%, 600%);
-    display: none;
 }
 
 .square-28 {
     transform: translate(700%, 600%);
-    display: none;
 }
 
 .square-29 {
     transform: translate(0%, 700%);
-    display: none;
 }
 
 .square-30 {
     transform: translate(200%, 700%);
-    display: none;
 }
 
 .square-31 {
     transform: translate(400%, 700%);
-    display: none;
 }
 
 .square-32 {
     transform: translate(600%, 700%);
-    display: none;
 }

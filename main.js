@@ -24,7 +24,7 @@ class FENComponent extends HTMLElement {
         //console.log('NEW POSITION RETURNED: ' + position)
         drawPosition(position, coordinates, newBoard.width, reversed, context)
 */
-        initBoard(this.id);
+        initBoard(this);
     }
 }
 
@@ -59,11 +59,17 @@ function removePiece(square) {
     }
 }
 
-function initBoard(boardId, FEN) {
-    let board = document.getElementById(boardId);
+
+function initBoard(board) {
     let fen = board.getAttribute('data-fen');
-    // Clear board childen
     board.textContent = '';
+    // Add number overlay
+    for (let i = 1; i < 33; i++) {
+        let n = document.createElement("div");
+        n.innerText = i
+        n.classList.add(`number-overlay-${i}`)
+        board.appendChild(n);
+    }
     if (fen == "") {
         // Set red pieces
         for (let i=1; i < 13; i++) {
