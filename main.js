@@ -1,6 +1,23 @@
 class FENComponent extends HTMLElement {
     connectedCallback() {
         let fen = this.getAttribute('data-fen')
+        // Clear contents
+        this.innerText = ""
+        // Create controls
+        let title = document.createElement('div')
+        let turntext = getFenTurnText(fen)
+        title.classList.add("pdn-title")
+        title.innerText = turntext
+
+        let board = document.createElement('div')
+        board.classList.add('board')
+        this.appendChild(title)
+        this.appendChild(board)
+
+        let reversebtn = document.createElement('button')
+        reversebtn.innerText = "reverse me"
+        reversebtn.onclick = function (event) { reverseBoard(event.target.parentElement) }
+        this.appendChild(reversebtn)
         // Check to see if the data-reverse-board value is set, else use a default value of true
 /*        let reversedAttr = this.getAttribute('data-reverse-board')
         let reversed = true
@@ -24,7 +41,7 @@ class FENComponent extends HTMLElement {
         //console.log('NEW POSITION RETURNED: ' + position)
         drawPosition(position, coordinates, newBoard.width, reversed, context)
 */
-        initBoard(this);
+        initBoard(board, fen);
     }
 }
 
@@ -60,9 +77,18 @@ function removePiece(square) {
 }
 
 
-function initBoard(board) {
-    let fen = board.getAttribute('data-fen');
+function initBoard(board, fen) {
+    //let fen = board.getAttribute('data-fen');
     board.textContent = '';
+    //let turntext = getFenTurnText(fen)
+
+    // Add Title
+    //let toplay = document.createElement("div")
+    //toplay.innerText = turntext
+    // Need to convert pdn generation to a child of pdn-fen node to allow additional items
+    // for title, notation, controls, etc.
+    //document.appendChild(toplay)
+
     // Add number overlay
     for (let i = 1; i < 33; i++) {
         let n = document.createElement("div");
@@ -127,6 +153,17 @@ function setPosition(fen) {
     //console.log('New Position:')
     //console.log(position)
     return position
+}
+
+function getFenTurnText(fen) {
+    let turn = fen.split(':')[0]
+    let turntext = ""
+    if ( turn.substring(turn.length -1) == "B") {
+        turntext = "Red to play"
+    } else if (turn.substring(turn.length - 1) == "W") {
+        turntext = "White to play"
+    }
+    return turntext
 }
 
 function findInvertSquare(number) {

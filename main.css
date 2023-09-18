@@ -1,5 +1,6 @@
 body {
     background-color: #333333;
+    color: #ffffd6; 
 }
 
 pdn-fen:not(:defined) {
@@ -12,14 +13,22 @@ pdn-fen:not(:defined) {
 
 pdn-fen {
     display: block;
+    margin: auto;
+    width: 35%;
+}
+
+/* Previously pdn-fen */
+.board {
+    display: block;
     position: relative;
     background-image: url("./assets/board.png");
     background-size: cover;
     aspect-ratio: 1;
-    width: 35%;
+    width: 100%;
     border-radius: 5px;
 }
 
+/*
 .board {
     position: relative;
     background-image: url("./assets/board.png");
@@ -27,6 +36,13 @@ pdn-fen {
     width: 800px;
     height: 800px;
     border-radius: 5px;
+}
+*/
+.pdn-title {
+    margin: auto;
+    padding: 5px;
+    text-align: center;
+    font-size: 1.75em;
 }
 
 .piece {
