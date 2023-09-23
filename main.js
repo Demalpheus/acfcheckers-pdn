@@ -4,6 +4,16 @@ class FENComponent extends HTMLElement {
         // Clear contents
         this.innerText = ""
         // Create controls
+        let leftspacer = document.createElement('div')
+        leftspacer.classList.add("pdn-spacer")
+        leftspacer.innerText = ""
+        let rightspacer = document.createElement('div')
+        rightspacer.classList.add("pdn-spacer")
+        let flipbutton = document.createElement('button')
+        flipbutton.classList.add("pdn-flip")
+        flipbutton.innerText = "flip"
+        flipbutton.onclick = function (event) { reverseBoard((event.target.parentElement).parentElement) }
+        rightspacer.appendChild(flipbutton)
         let title = document.createElement('div')
         let turntext = getFenTurnText(fen)
         title.classList.add("pdn-title")
@@ -11,13 +21,11 @@ class FENComponent extends HTMLElement {
 
         let board = document.createElement('div')
         board.classList.add('board')
+        this.appendChild(leftspacer)
         this.appendChild(title)
+        this.appendChild(rightspacer)
         this.appendChild(board)
 
-        let reversebtn = document.createElement('button')
-        reversebtn.innerText = "reverse me"
-        reversebtn.onclick = function (event) { reverseBoard(event.target.parentElement) }
-        this.appendChild(reversebtn)
         // Check to see if the data-reverse-board value is set, else use a default value of true
 /*        let reversedAttr = this.getAttribute('data-reverse-board')
         let reversed = true
