@@ -44,12 +44,14 @@ pdn-fen {
     /*padding: 5px;*/
     text-align: center;
     font-size: 1.75em;
-    width: 80%;
+    width: 76%;
 }
 
 .pdn-spacer {
     display: inline-block;
-    width: 10%;
+    margin: auto;
+    text-align: center;
+    width: 12%;
 }
 
 .pdn-flip {
