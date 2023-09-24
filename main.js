@@ -69,7 +69,7 @@ class PDNComponent extends HTMLElement {
         if (fen == '' || fen === null) {
             fen = gameStartFEN
         }
-        console.log('PDN FEN: ' + fen) 
+
         initBoard(board, fen);
     }
 }
