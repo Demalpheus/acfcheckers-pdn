@@ -41,10 +41,10 @@ pdn-fen {
 .pdn-title {
     display: inline-block;
     margin: auto;
-    padding: 5px;
+    /*padding: 5px;*/
     text-align: center;
     font-size: 1.75em;
-    width: 75%;
+    width: 80%;
 }
 
 .pdn-spacer {
