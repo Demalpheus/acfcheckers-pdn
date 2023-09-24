@@ -61,10 +61,24 @@ class PDNComponent extends HTMLElement {
         let board = document.createElement('div')
         board.classList.add('board')
         
+        let beginningbutton = document.createElement('button')
+        beginningbutton.innerText = '<<'
+        let endbutton = document.createElement('button')
+        endbutton.innerText = '>>'
+        let nextbutton = document.createElement('button')
+        nextbutton.innerText = '>'
+        nextbutton.onclick = function (event) { nextMove(event.target.parentElement) }
+        let previousbutton = document.createElement('button')
+        previousbutton.innerText = '<'
+
         this.appendChild(leftspacer)
         this.appendChild(title)
         this.appendChild(rightspacer)
         this.appendChild(board)
+        this.appendChild(beginningbutton)
+        this.appendChild(previousbutton)
+        this.appendChild(nextbutton)
+        this.appendChild(endbutton)
 
         if (fen == '' || fen === null) {
             fen = gameStartFEN
@@ -76,9 +90,9 @@ class PDNComponent extends HTMLElement {
 
 customElements.define('pdn-game', PDNComponent)
 
-function move(start, end) {
+function makeMove(board, start, end) {
     try {
-        let piece = document.querySelector(`.square-${start}`);
+        let piece = board.querySelector(`.square-${start}`);
         // Determine the order in which to change css classes
         if (Number(start) > Number(end)) {
             piece.classList.add(`square-${end}`);
@@ -224,4 +238,28 @@ function reverseBoard(board) {
         let rn = findInvertSquare(n)
         o.innerText = rn
     })
+}
+
+function parseMoves(moves, number) {
+    // Replace turn numbers like "1."
+    let pattern = /[0-9]*\. /g
+    moves = moves.replace(pattern, '')
+    let moveList = moves.split(' ')
+    return moveList[number]
+}
+
+function nextMove(board) {
+    let moveNumber = board.getAttribute('data-movenum')
+    let moves = board.getAttribute('data-moves')
+    let move = parseMoves(moves, moveNumber)
+    console.log(moves)
+    if (move.includes('-') == true) {
+        // Regular move
+        let m = move.split('-')
+        makeMove(board, m[0], m[1])
+        board.setAttribute('data-movenum', Number(moveNumber) + 1)
+    } else if (move.includes('x')) {
+        // Jump
+        
+    }
 }
