@@ -1,3 +1,7 @@
+# ToDo
+- [ ] Rework CSS for Mobile Screens
+- [ ] Add full PDN Game Support
+- [ ] Convert to Block Plugin for Wordpress
 
 # Colors
 Notating colors used for reference
@@ -12,5 +16,4 @@ white FDEEC6 - 20% lighter: #fdf1d1
 
 crown for red: #1a1a1a
 crown for white: #333333
-
 
