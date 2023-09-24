@@ -1,3 +1,5 @@
+const gameStartFEN = '[FEN "B:W21,22,23,24,25,26,27,28,29,30,31,32:B1,2,3,4,5,6,7,8,9,10,11,12"]'
+
 class FENComponent extends HTMLElement {
     connectedCallback() {
         let fen = this.getAttribute('data-fen')
@@ -26,34 +28,53 @@ class FENComponent extends HTMLElement {
         this.appendChild(rightspacer)
         this.appendChild(board)
 
-        // Check to see if the data-reverse-board value is set, else use a default value of true
-/*        let reversedAttr = this.getAttribute('data-reverse-board')
-        let reversed = true
-        if (reversedAttr == "false") {
-            reversed = false
-        } 
-        let numbersAttr = this.getAttribute('data-show-numbers')
-        let showNumbers = true
-        if (numbersAttr == "false") {
-            showNumbers = false
-        }
-        let newBoard = document.createElement('canvas')
-        let size = getBoardSize()
-        newBoard.width = size
-        newBoard.height = size
-        this.appendChild(newBoard)
-        let context = newBoard.getContext("2d")
-        drawBoard(newBoard.width, newBoard.height, reversed, showNumbers, context)
-        let coordinates = getPiecePlacements(newBoard)
-        let position = setPosition(fen)
-        //console.log('NEW POSITION RETURNED: ' + position)
-        drawPosition(position, coordinates, newBoard.width, reversed, context)
-*/
         initBoard(board, fen);
     }
 }
 
 customElements.define('pdn-fen', FENComponent)
+
+
+class PDNComponent extends HTMLElement {
+    connectedCallback() {
+        // Grab PDN information
+        let fen = this.getAttribute('data-fen')
+        let player1 = this.getAttribute('data-player1')
+        let player2 = this.getAttribute('data-player2')
+        let moves = this.getAttribute('data-moves')
+        
+        // Clear contents
+        this.innerText = ""
+        let leftspacer = document.createElement('div')
+        leftspacer.classList.add('pdn-spacer')
+        leftspacer.innerText = ''
+        let rightspacer = document.createElement('div')
+        rightspacer.classList.add('pdn-spacer')
+        let flipbutton = document.createElement('button')
+        flipbutton.classList.add('pdn-flip')
+        flipbutton.innerText = 'flip'
+        flipbutton.onclick = function (event) { reverseBoard((event.target.parentElement).parentElement) }
+        rightspacer.appendChild(flipbutton)
+        let title = document.createElement('div')
+        title.innerText = 'Game Title Placeholder'
+        title.classList.add('pdn-title')
+        let board = document.createElement('div')
+        board.classList.add('board')
+        
+        this.appendChild(leftspacer)
+        this.appendChild(title)
+        this.appendChild(rightspacer)
+        this.appendChild(board)
+
+        if (fen == '' || fen === null) {
+            fen = gameStartFEN
+        }
+        console.log('PDN FEN: ' + fen) 
+        initBoard(board, fen);
+    }
+}
+
+customElements.define('pdn-game', PDNComponent)
 
 function move(start, end) {
     try {

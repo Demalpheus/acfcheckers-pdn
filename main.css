@@ -17,6 +17,12 @@ pdn-fen {
     width: 35%;
 }
 
+pdn-game {
+    display: block;
+    margin: auto;
+    width: 35%;
+}
+
 /* Previously pdn-fen */
 .board {
     display: block;
