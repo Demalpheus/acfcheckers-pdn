@@ -106,8 +106,32 @@ function makeMove(board, start, end) {
     }
 }
 
-function removePiece(square) {
-    let s = document.querySelector(`.square-${square}`);
+function makeJump(board, start, end) {
+    try {
+        let s = Number(start)
+        let e = Number(end)
+        let diff = s - e 
+        let jumpedSquare
+        if ( diff == 7) {
+            jumpedSquare = s - 4
+        } else if (diff == 9) {
+            jumpedSquare = s - 5
+        } else if (diff == -7) {
+            jumpedSquare = s + 3
+        } else if (diff == -9) {
+            jumpedSquare = s + 4
+        }
+        console.log('Jumped square is: ' + jumpedSquare)
+        makeMove(board, start, end)
+        removePiece(board, jumpedSquare)
+
+    } catch (err) {
+        console.log('No piece to move')
+    }
+}
+
+function removePiece(board, square) {
+    let s = board.querySelector(`.square-${square}`);
     if (s.classList.contains("wp")) {
         s.classList.remove("wp");
     } else if (s.classList.contains("wk")) {
@@ -260,6 +284,16 @@ function nextMove(board) {
         board.setAttribute('data-movenum', Number(moveNumber) + 1)
     } else if (move.includes('x')) {
         // Jump
+        let m = move.split('x')
+        makeJump(board, m[0], m[1])
+        /*
+        for (let i = 0; i < m.length; i++) {
+            //
+            console.log('Making Jump: ' + m)
+            if (!(i + 1) > m.length || m.length == 2) {
+                makeJump(board, m[i], m[i+1])
+            }
+        }*/
         
     }
 }
