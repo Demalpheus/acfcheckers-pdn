@@ -112,14 +112,19 @@ function makeJump(board, start, end) {
         let e = Number(end)
         let diff = s - e 
         let jumpedSquare
+        // Due to the staggered nature of the board,
+        // The distances between the starting square 
+        // and jumped piece will vary by 1 depending
+        // on which row the starting piece is in.
+        let offset = (((Math.floor( s / 4 ) % 2) == 0) ? 1 : 0)
         if ( diff == 7) {
-            jumpedSquare = s - 4
+            jumpedSquare = s - 4 - offset
         } else if (diff == 9) {
-            jumpedSquare = s - 5
+            jumpedSquare = s - 5 - offset
         } else if (diff == -7) {
-            jumpedSquare = s + 3
+            jumpedSquare = s + 3 + offset
         } else if (diff == -9) {
-            jumpedSquare = s + 4
+            jumpedSquare = s + 4 + offset
         }
         console.log('Jumped square is: ' + jumpedSquare)
         makeMove(board, start, end)
@@ -285,15 +290,11 @@ function nextMove(board) {
     } else if (move.includes('x')) {
         // Jump
         let m = move.split('x')
-        makeJump(board, m[0], m[1])
-        /*
-        for (let i = 0; i < m.length; i++) {
-            //
+        for (let i = 0; i < (m.length - 1); i++) {
             console.log('Making Jump: ' + m)
-            if (!(i + 1) > m.length || m.length == 2) {
-                makeJump(board, m[i], m[i+1])
-            }
-        }*/
+            makeJump(board, m[i], m[i+1])
+        }
+        board.setAttribute('data-movenum', Number(moveNumber) + 1)
         
     }
 }
