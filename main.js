@@ -281,7 +281,11 @@ function nextMove(board) {
     let moveNumber = board.getAttribute('data-movenum')
     let moves = board.getAttribute('data-moves')
     let move = parseMoves(moves, moveNumber)
-    console.log(moves)
+    //console.log(moves)
+    console.log('Is Jump: ' + isJump(move))
+    if (isJump(move)) {
+        move = move.replaceAll('-', 'x')
+    }
     if (move.includes('-') == true) {
         // Regular move
         let m = move.split('-')
@@ -297,4 +301,22 @@ function nextMove(board) {
         board.setAttribute('data-movenum', Number(moveNumber) + 1)
         
     }
+}
+
+function isJump(move) {
+    // Determine if the move is a jump.
+    let result = false
+    if (move.includes('x')) {
+        result = true
+    } else {
+        let m = move.split('-')
+        if (m.length > 2) {
+            result = true
+        } else {
+           if (Math.abs(m[0] - m[1]) > 5) {
+               result = true
+           }
+        }
+    }
+    return result
 }
