@@ -74,30 +74,30 @@ pdn-game {
 
 .rp {
     background-image: url("assets/rp.png");
-    transition: transform 0.5s;
-    
 }
 
 .wp {
     background-image: url("assets/wp.png");
-    transition: transform 0.5s;
-    
 }
 
 .rk {
     background-image: url("assets/rk.png");
-    transition: transform 0.5s;
     
 }
 
 .wk {
     background-image: url("assets/wk.png");
+}
+
+.pdn-move-animate {
     transition: transform 0.5s;
 }
 
+/*
 [class*="square-"] {
     transition: transform 0.5s;
 }
+*/
 
 [class*="number-overlay-"] {
     position: absolute;

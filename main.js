@@ -172,12 +172,12 @@ function initBoard(board, fen) {
         // Set red pieces
         for (let i=1; i < 13; i++) {
             let s = document.createElement("div");
-            s.classList.add("piece", "rp", `square-${i}`);
+            s.classList.add("piece", "rp", `square-${i}`, "pdn-move-animate");
             board.appendChild(s);
         }
         for (let i=21; i < 33; i++) {
             let s = document.createElement("div");
-            s.classList.add("piece", "wp", `square-${i}`);
+            s.classList.add("piece", "wp", `square-${i}`, "pdn-move-animate"); 
             board.appendChild(s);
         }
     } else {
@@ -185,7 +185,7 @@ function initBoard(board, fen) {
         for (let i=0; i < 32; i++) {
             if (pos[i] != "") {
                 let s = document.createElement("div");
-                s.classList.add("piece", pos[i], `square-${i+1}`);
+                s.classList.add("piece", pos[i], `square-${i+1}`, "pdn-move-animate");
                 board.appendChild(s);
             }
         }
